@@ -3,74 +3,98 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ImcMaui.NewFolder.MainPage"
              Title="Indice de la masa corporal">
+
+
     <ScrollView>
-        <VerticalStackLayout
-        Padding="24"
-        Spacing="24">
+        <Grid
+         Padding="24" 
+         RowDefinitions="Auto, Auto, *"
+         ColumnDefinitions="*"
+         RowSpacing="24">
             <Border
-            Stroke="LightGray"
-            StrokeThickness="2">
+             Stroke="LightGray"
+             StrokeThickness="2">
 
-                <Border.StrokeShape>
-                    <RoundRectangle
-                        CornerRadius="10"/>
-                </Border.StrokeShape>
-                
-                <VerticalStackLayout>
+            <Border.StrokeShape>
+              <RoundRectangle
+               CornerRadius="10"/>
+            </Border.StrokeShape>
+
+                 <Grid
+                  RowDefinitions="*, *"
+                  ColumnDefinitions="Auto, *"
+                  ColumnSpacing="8">
 
                     <Label
-                    Text="Proporcione el peso en gramos"/>
+                     Grid.Row="0"
+                     Grid.Column="0"
+                     VerticalOptions="Center"
+                    Text="Proporcione el peso en kilogramos"/>
                     <Entry
-                    BackgroundColor="WhiteSmoke"
-                        x:Name="PesoEntry"/>
+                     Grid.Row="0"
+                     Grid.Column="1"
+                        Text="{Binding Path=Peso}"
+                     
+                     BackgroundColor="WhiteSmoke"
+                     />
                     <Label
-                    Text="Proporcione estatura y metros"/>
+                     Grid.Row="1"
+                     VerticalOptions="Center"
+                     Grid.Column="0"
+                     Text="Proporcione estatura en metros"/>
                     <Entry
-                    BackgroundColor="WhiteSmoke"
-                        x:Name="EstaturaEntry"/>
-                    
-                </VerticalStackLayout>
+                     Grid.Row="1"
+                     Grid.Column="1"
+                     Text="{Binding Path=Estatura}"
+                     BackgroundColor="WhiteSmoke"/>
+                </Grid>
             </Border>
 
             <HorizontalStackLayout
-            HorizontalOptions="Center"
-            Spacing="24">
+             Grid.Row="1"
+             Grid.Column="0"
+             HorizontalOptions="Center"
+             Spacing="24">
 
                 <Button
-                Text="Calcular"
-                BackgroundColor="Green"
-                    Clicked="OnCalcularButtonCliked"/>
+                 Text="Calcular"
+                 BackgroundColor="Green"
+                    Command="{Binding Path=CalcularCommand}"
+                 />
+                
                 <Button
-                Text="Limpiar"
-                    
-                    Clicked="OnLimpiarButtonCliked"/>
+                 Text="Limpiar"
+               Command="{Binding Path=LimpiarCommand}" />
+                
+                
             </HorizontalStackLayout>
 
-            <Border>
-                <VerticalStackLayout
-                    Padding="18"
-                    Spacing="8">
+                <Border
+                 Grid.Row="2"
+                 Grid.Column="0">
+
+
+                <VerticalStackLayout>
+                    <Label Text="El indice de masa corporal es:"/>
+                    
                     <Label
-                    Text="El indice de masa corporal es:"/>
+                     
+                     Text="{Binding Path=Imc}"
+                     HorizontalOptions="Center"
+                     FontSize="Medium"
+                     FontAttributes="Bold"/>
                     <Label
-                    Text="23.4567"
-                    HorizontalOptions="Center"
-                    FontSize="Medium"
-                    FontAttributes="Bold"
-                        x:Name="ImcLabel"/>
+                     Text="La situacion nutricional de la persona es:"/>
                     <Label
-                    Text="La situacion nutricional de la persona es:"/>
-                    <Label
-                    Text="Peso normal"
-                    HorizontalOptions="Center"
-                    FontSize="Medium"
-                    FontAttributes="Bold"
-                    x:Name="SituacionNutricionalLabel"/>
+                     
+                     
+                     Text="{Binding Path=Estadonutricional}"
+                     HorizontalOptions="Center"
+                     FontSize="Medium"/>
 
                 </VerticalStackLayout>
             </Border>
-        </VerticalStackLayout>
-
+        </Grid>
     </ScrollView>
- 
+
 </ContentPage>
