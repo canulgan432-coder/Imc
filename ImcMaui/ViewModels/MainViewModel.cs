@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using ImcMaui.Models;
+using Imc.Models;
 
 using System.Windows.Input;
 
